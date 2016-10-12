@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -27,6 +28,7 @@ namespace EWP.Models
 
         public int Experience { get; set; }
 
+        [ForeignKey("Sport")]
         public int SportID { get; set; }
 
         public int PhoneNumber { get; set; }
@@ -34,5 +36,7 @@ namespace EWP.Models
         public string Address { get; set; }
 
         public bool EmailConfirmation { get; set; }
+
+        public virtual Sport Sport { get; set; }
     }
 }
