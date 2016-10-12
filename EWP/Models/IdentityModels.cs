@@ -31,6 +31,6 @@ namespace EWP.Models
         }
 
         public System.Data.Entity.DbSet<EWP.Models.Bone> Bones { get; set; }
-
+    
     }
 }
