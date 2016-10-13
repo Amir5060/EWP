@@ -10,7 +10,7 @@ using EWP.Models;
 
 namespace EWP.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "Admin")]
     public class BonesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
