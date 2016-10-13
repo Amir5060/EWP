@@ -13,19 +13,17 @@ namespace EWP.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public partial class Bone
+    public partial class C1RMWorkout
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bone()
-        {
-            this.Injuries = new HashSet<Injury>();
-        }
-    
         [Key]
-        public int BoneID { get; set; }
-        public string Name { get; set; }
+        public int RMWorkoutID { get; set; }
+        public int RMID { get; set; }
+        public int WorkoutID { get; set; }
+        public Nullable<int> WorkoutWeight { get; set; }
+        public Nullable<int> Repetition { get; set; }
+        public Nullable<System.DateTime> RMWorkoutDate { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Injury> Injuries { get; set; }
+        public virtual C1RM C1RM { get; set; }
+        public virtual Workout Workout { get; set; }
     }
 }

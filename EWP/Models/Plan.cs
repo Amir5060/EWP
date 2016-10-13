@@ -12,19 +12,22 @@ namespace EWP.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Sport
+    public partial class Plan
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sport()
+        public Plan()
         {
-            this.Users = new HashSet<User>();
+            this.WorkoutPlans = new HashSet<WorkoutPlan>();
         }
     
-        public int SportID { get; set; }
-        public string SportName { get; set; }
-        public string SportType { get; set; }
+        public int PlanID { get; set; }
+        public System.Guid UserID { get; set; }
+        public Nullable<int> Microcycle { get; set; }
+        public Nullable<int> WorkoutTime { get; set; }
+        public Nullable<System.DateTime> PlanDate { get; set; }
     
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<WorkoutPlan> WorkoutPlans { get; set; }
     }
 }

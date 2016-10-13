@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EWP.Models.Bone>
+﻿@model IEnumerable<EWP.Models.Muscle>
 
 @{
     ViewBag.Title = "Index";
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BoneID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BoneID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BoneID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.MuscleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MuscleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MuscleID })
         </td>
     </tr>
 }

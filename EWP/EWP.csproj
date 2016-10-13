@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -198,22 +200,75 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BonesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JointsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MusclesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610131223195_EWPDB.cs" />
+    <Compile Include="Migrations\201610131223195_EWPDB.Designer.cs">
+      <DependentUpon>201610131223195_EWPDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Bone.cs" />
+    <Compile Include="Models\Bone.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C1RM.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C1RMWorkout.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataConnection.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataConnection.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataConnection.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataConnection.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataConnection.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Injury.cs" />
-    <Compile Include="Models\Joint.cs" />
+    <Compile Include="Models\Injury.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Joint.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Muscle.cs" />
-    <Compile Include="Models\Sport.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Workout.cs" />
-    <Compile Include="Models\WorkoutMuscle.cs" />
+    <Compile Include="Models\Muscle.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Plan.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sport.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Workout.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkoutMuscle.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkoutPlan.cs">
+      <DependentUpon>DataConnection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -228,6 +283,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\DataConnection.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataConnection.edmx</DependentUpon>
+      <LastGenOutput>DataConnection.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DataConnection.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataConnection.edmx</DependentUpon>
+      <LastGenOutput>DataConnection.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -236,6 +301,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Models\User.cs.vsspell" />
+    <EntityDeploy Include="Models\DataConnection.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataConnection.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DataConnection.edmx.diagram">
+      <DependentUpon>DataConnection.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -290,8 +362,27 @@
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Joints\Create.cshtml" />
+    <Content Include="Views\Joints\Delete.cshtml" />
+    <Content Include="Views\Joints\Details.cshtml" />
+    <Content Include="Views\Joints\Edit.cshtml" />
+    <Content Include="Views\Joints\Index.cshtml" />
+    <Content Include="Views\Muscles\Create.cshtml" />
+    <Content Include="Views\Muscles\Delete.cshtml" />
+    <Content Include="Views\Muscles\Details.cshtml" />
+    <Content Include="Views\Muscles\Edit.cshtml" />
+    <Content Include="Views\Muscles\Index.cshtml" />
+    <Content Include="Views\Sports\Create.cshtml" />
+    <Content Include="Views\Sports\Delete.cshtml" />
+    <Content Include="Views\Sports\Details.cshtml" />
+    <Content Include="Views\Sports\Edit.cshtml" />
+    <Content Include="Views\Sports\Index.cshtml" />
+    <Content Include="Views\Workouts\Create.cshtml" />
+    <Content Include="Views\Workouts\Delete.cshtml" />
+    <Content Include="Views\Workouts\Details.cshtml" />
+    <Content Include="Views\Workouts\Edit.cshtml" />
+    <Content Include="Views\Workouts\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -299,6 +390,17 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610131223195_EWPDB.resx">
+      <DependentUpon>201610131223195_EWPDB.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

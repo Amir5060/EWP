@@ -31,6 +31,14 @@ namespace EWP.Models
         }
 
         public System.Data.Entity.DbSet<EWP.Models.Bone> Bones { get; set; }
-    
+
+        public System.Data.Entity.DbSet<EWP.Models.Joint> Joints { get; set; }
+
+        public System.Data.Entity.DbSet<EWP.Models.Muscle> Muscles { get; set; }
+
+        public System.Data.Entity.DbSet<EWP.Models.Sport> Sports { get; set; }
+
+        public System.Data.Entity.DbSet<EWP.Models.Workout> Workouts { get; set; }
     }
+
 }

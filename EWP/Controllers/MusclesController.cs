@@ -10,107 +10,107 @@ using EWP.Models;
 
 namespace EWP.Controllers
 {
-    public class BonesController : Controller
+    public class MusclesController : Controller
     {
         private EWPEntities db = new EWPEntities();
 
-        // GET: Bones
+        // GET: Muscles
         public ActionResult Index()
         {
-            return View(db.Bones.ToList());
+            return View(db.Muscles.ToList());
         }
 
-        // GET: Bones/Details/5
+        // GET: Muscles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bone bone = db.Bones.Find(id);
-            if (bone == null)
+            Muscle muscle = db.Muscles.Find(id);
+            if (muscle == null)
             {
                 return HttpNotFound();
             }
-            return View(bone);
+            return View(muscle);
         }
 
-        // GET: Bones/Create
+        // GET: Muscles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Bones/Create
+        // POST: Muscles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BoneID,Name")] Bone bone)
+        public ActionResult Create([Bind(Include = "MuscleID,Name")] Muscle muscle)
         {
             if (ModelState.IsValid)
             {
-                db.Bones.Add(bone);
+                db.Muscles.Add(muscle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(bone);
+            return View(muscle);
         }
 
-        // GET: Bones/Edit/5
+        // GET: Muscles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bone bone = db.Bones.Find(id);
-            if (bone == null)
+            Muscle muscle = db.Muscles.Find(id);
+            if (muscle == null)
             {
                 return HttpNotFound();
             }
-            return View(bone);
+            return View(muscle);
         }
 
-        // POST: Bones/Edit/5
+        // POST: Muscles/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BoneID,Name")] Bone bone)
+        public ActionResult Edit([Bind(Include = "MuscleID,Name")] Muscle muscle)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(bone).State = EntityState.Modified;
+                db.Entry(muscle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(bone);
+            return View(muscle);
         }
 
-        // GET: Bones/Delete/5
+        // GET: Muscles/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bone bone = db.Bones.Find(id);
-            if (bone == null)
+            Muscle muscle = db.Muscles.Find(id);
+            if (muscle == null)
             {
                 return HttpNotFound();
             }
-            return View(bone);
+            return View(muscle);
         }
 
-        // POST: Bones/Delete/5
+        // POST: Muscles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Bone bone = db.Bones.Find(id);
-            db.Bones.Remove(bone);
+            Muscle muscle = db.Muscles.Find(id);
+            db.Muscles.Remove(muscle);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

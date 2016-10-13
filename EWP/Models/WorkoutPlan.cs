@@ -12,17 +12,17 @@ namespace EWP.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class WorkoutMuscle
+    public partial class WorkoutPlan
     {
-        public int WorkoutMuscleID { get; set; }
+        public int WorkoutPlanID { get; set; }
         public int WorkoutID { get; set; }
-        public int MuscleID { get; set; }
-        public bool PrimMover { get; set; }
-        public bool Synergist { get; set; }
-        public bool Stabilizer { get; set; }
-        public bool Lengthening { get; set; }
+        public int PlanID { get; set; }
+        public int Repetition { get; set; }
+        public int WorkoutPlanSet { get; set; }
+        public int Rest { get; set; }
+        public int WorkoutPlanWeight { get; set; }
     
-        public virtual Muscle Muscle { get; set; }
+        public virtual Plan Plan { get; set; }
         public virtual Workout Workout { get; set; }
     }
 }

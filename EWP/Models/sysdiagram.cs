@@ -12,17 +12,12 @@ namespace EWP.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class WorkoutMuscle
+    public partial class sysdiagram
     {
-        public int WorkoutMuscleID { get; set; }
-        public int WorkoutID { get; set; }
-        public int MuscleID { get; set; }
-        public bool PrimMover { get; set; }
-        public bool Synergist { get; set; }
-        public bool Stabilizer { get; set; }
-        public bool Lengthening { get; set; }
-    
-        public virtual Muscle Muscle { get; set; }
-        public virtual Workout Workout { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

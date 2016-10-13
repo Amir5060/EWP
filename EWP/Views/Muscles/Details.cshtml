@@ -1,4 +1,4 @@
-﻿@model EWP.Models.Bone
+﻿@model EWP.Models.Muscle
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Bone</h4>
+    <h4>Muscle</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -21,6 +21,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BoneID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MuscleID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
