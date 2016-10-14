@@ -1,0 +1,15 @@
+﻿@model EWP.Models.CheckAuthorize
+@{
+    ViewBag.Title = "AccessDenied";
+}
+<h2>@ViewBag.Title.</h2>
+
+You don't have an access to this page. Please get Fuck out!
+<p><a href="javascript:void(0);" id="backLink">Back</a>
+
+<script type="text/javascript">
+    $(document).on('click', '#backLink', function () {
+        console.log("Test");
+        history.go(-1);
+    });
+</script></p>

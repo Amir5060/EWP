@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - EWP</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 </head>
 <body>
@@ -27,30 +28,32 @@
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Role", "Index", "Role")</li>
+                        <li class="collapse-hidden">
+                            <ul class="nav navbar-nav collapse-hidden">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" style="margin-right: 5px;" href="#" data-toggle="dropdown">Body<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Muscle", "Index", "Muscles")</li>
+                                        <li>@Html.ActionLink("Bone", "Index", "Bones")</li>
+                                        <li>@Html.ActionLink("Joint", "Index", "Joints")</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="collapse-hidden">
+                            <ul class="nav navbar-nav collapse-hidden">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" style="margin-right: 5px;" href="#" data-toggle="dropdown">Workout<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Workout", "Index", "Workouts")</li>
+                                        <li>@Html.ActionLink("Sport", "Index", "Sports")</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                     }
-                    <li class="collapse-hidden">
-                        <ul class="nav navbar-nav collapse-hidden">
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" style="margin-right: 5px;" href="#" data-toggle="dropdown">Body<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Muscle", "Index", "Muscles")</li>
-                                    <li>@Html.ActionLink("Bone", "Index", "Bones")</li>
-                                    <li>@Html.ActionLink("Joint", "Index", "Joints")</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="collapse-hidden">
-                        <ul class="nav navbar-nav collapse-hidden">
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" style="margin-right: 5px;" href="#" data-toggle="dropdown">Workout<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Workout", "Index", "Workouts")</li>
-                                    <li>@Html.ActionLink("Sport", "Index", "Sports")</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
+                    
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

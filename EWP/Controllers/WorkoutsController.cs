@@ -10,6 +10,7 @@ using EWP.Models;
 
 namespace EWP.Controllers
 {
+    [CheckAuthorize(Roles = "Admin")]
     public class WorkoutsController : Controller
     {
         private EWPEntities db = new EWPEntities();

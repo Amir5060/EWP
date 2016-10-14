@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EWP.Models.WorkoutMuscle>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimMover)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Synergist)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stabilizer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lengthening)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Muscle.MuscleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Workout.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrimMover)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Synergist)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stabilizer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lengthening)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Muscle.MuscleID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Workout.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorkoutMuscleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorkoutMuscleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorkoutMuscleID })
+        </td>
+    </tr>
+}
+
+</table>

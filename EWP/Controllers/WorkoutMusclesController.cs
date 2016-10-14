@@ -11,107 +11,116 @@ using EWP.Models;
 namespace EWP.Controllers
 {
     [CheckAuthorize(Roles = "Admin")]
-    public class BonesController : Controller
+    public class WorkoutMusclesController : Controller
     {
         private EWPEntities db = new EWPEntities();
 
-        // GET: Bones
+        // GET: WorkoutMuscles
         public ActionResult Index()
         {
-            return View(db.Bones.ToList());
+            var workoutMuscles = db.WorkoutMuscles.Include(w => w.Muscle).Include(w => w.Workout);
+            return View(workoutMuscles.ToList());
         }
 
-        // GET: Bones/Details/5
+        // GET: WorkoutMuscles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bone bone = db.Bones.Find(id);
-            if (bone == null)
+            WorkoutMuscle workoutMuscle = db.WorkoutMuscles.Find(id);
+            if (workoutMuscle == null)
             {
                 return HttpNotFound();
             }
-            return View(bone);
+            return View(workoutMuscle);
         }
 
-        // GET: Bones/Create
+        // GET: WorkoutMuscles/Create
         public ActionResult Create()
         {
+            ViewBag.MuscleID = new SelectList(db.Muscles, "MuscleID", "MuscleID");
+            ViewBag.WorkoutID = new SelectList(db.Workouts, "WorkoutID", "Name");
             return View();
         }
 
-        // POST: Bones/Create
+        // POST: WorkoutMuscles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BoneID,Name")] Bone bone)
+        public ActionResult Create([Bind(Include = "WorkoutMuscleID,WorkoutID,MuscleID,PrimMover,Synergist,Stabilizer,Lengthening")] WorkoutMuscle workoutMuscle)
         {
             if (ModelState.IsValid)
             {
-                db.Bones.Add(bone);
+                db.WorkoutMuscles.Add(workoutMuscle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(bone);
+            ViewBag.MuscleID = new SelectList(db.Muscles, "MuscleID", "MuscleID", workoutMuscle.MuscleID);
+            ViewBag.WorkoutID = new SelectList(db.Workouts, "WorkoutID", "Name", workoutMuscle.WorkoutID);
+            return View(workoutMuscle);
         }
 
-        // GET: Bones/Edit/5
+        // GET: WorkoutMuscles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bone bone = db.Bones.Find(id);
-            if (bone == null)
+            WorkoutMuscle workoutMuscle = db.WorkoutMuscles.Find(id);
+            if (workoutMuscle == null)
             {
                 return HttpNotFound();
             }
-            return View(bone);
+            ViewBag.MuscleID = new SelectList(db.Muscles, "MuscleID", "MuscleID", workoutMuscle.MuscleID);
+            ViewBag.WorkoutID = new SelectList(db.Workouts, "WorkoutID", "Name", workoutMuscle.WorkoutID);
+            return View(workoutMuscle);
         }
 
-        // POST: Bones/Edit/5
+        // POST: WorkoutMuscles/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BoneID,Name")] Bone bone)
+        public ActionResult Edit([Bind(Include = "WorkoutMuscleID,WorkoutID,MuscleID,PrimMover,Synergist,Stabilizer,Lengthening")] WorkoutMuscle workoutMuscle)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(bone).State = EntityState.Modified;
+                db.Entry(workoutMuscle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(bone);
+            ViewBag.MuscleID = new SelectList(db.Muscles, "MuscleID", "MuscleID", workoutMuscle.MuscleID);
+            ViewBag.WorkoutID = new SelectList(db.Workouts, "WorkoutID", "Name", workoutMuscle.WorkoutID);
+            return View(workoutMuscle);
         }
 
-        // GET: Bones/Delete/5
+        // GET: WorkoutMuscles/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bone bone = db.Bones.Find(id);
-            if (bone == null)
+            WorkoutMuscle workoutMuscle = db.WorkoutMuscles.Find(id);
+            if (workoutMuscle == null)
             {
                 return HttpNotFound();
             }
-            return View(bone);
+            return View(workoutMuscle);
         }
 
-        // POST: Bones/Delete/5
+        // POST: WorkoutMuscles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Bone bone = db.Bones.Find(id);
-            db.Bones.Remove(bone);
+            WorkoutMuscle workoutMuscle = db.WorkoutMuscles.Find(id);
+            db.WorkoutMuscles.Remove(workoutMuscle);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
