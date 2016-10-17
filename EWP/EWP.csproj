@@ -206,6 +206,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MusclesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WorkoutMusclesController.cs" />
     <Compile Include="Controllers\WorkoutsController.cs" />
@@ -242,6 +243,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EWPModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllSports_Result.cs">
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GetUserByUserID_Result.cs">
       <DependentUpon>EWPModel.tt</DependentUpon>
@@ -315,6 +319,7 @@
     <Content Include="Models\EWPModel.edmx.diagram">
       <DependentUpon>EWPModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\EWPModel.edmx.vsspell" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -400,6 +405,8 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\UserInfo\Index.cshtml" />
+    <Content Include="Views\UserInfo\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

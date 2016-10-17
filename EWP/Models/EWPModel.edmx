@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EWPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EWPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="1RM">
           <Key>
             <PropertyRef Name="RMID" />
@@ -281,6 +281,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetAllSports" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetUserByUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserID" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -350,8 +351,7 @@
             <End Role="WorkoutPlan" EntitySet="WorkoutPlan" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EWPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -723,8 +723,9 @@
             <End Role="WorkoutPlan" EntitySet="WorkoutPlans" />
           </AssociationSet>
           <FunctionImport Name="GetUserByUserID" ReturnType="Collection(EWPModel.GetUserByUserID_Result)">
-            <Parameter Name="UserID" Mode="In" Type="Guid" />
+          <Parameter Name="UserID" Mode="In" Type="Guid" />
           </FunctionImport>
+          <FunctionImport Name="GetAllSports" EntitySet="Sports" ReturnType="Collection(EWPModel.Sport)" />
         </EntityContainer>
         <ComplexType Name="GetUserByUserID_Result">
           <Property Type="Guid" Name="UserID" Nullable="false" />
@@ -740,7 +741,22 @@
           <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Address" Nullable="true" MaxLength="1000" />
           <Property Type="Boolean" Name="EmailConfirmation" Nullable="false" />
+          <Property Type="Int32" Name="SportID1" Nullable="false" />
+          <Property Type="String" Name="SportName" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="SportType" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="InjuryID" Nullable="false" />
+          <Property Type="Guid" Name="UserID1" Nullable="false" />
+          <Property Type="Int32" Name="MuscleID" Nullable="true" />
+          <Property Type="Int32" Name="JointID" Nullable="true" />
+          <Property Type="String" Name="InjuryDescription" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="BoneID" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="GetAllSports_Result">
+          <Property Type="Int32" Name="SportID" Nullable="false" />
+          <Property Type="String" Name="SportName" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="SportType" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -880,7 +896,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetUserByUserID" FunctionName="EWPModel.Store.GetUserByUserID">
-            <ResultMapping>
+          <ResultMapping>
               <ComplexTypeMapping TypeName="EWPModel.GetUserByUserID_Result">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -895,8 +911,19 @@
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="EmailConfirmation" ColumnName="EmailConfirmation" />
+                <ScalarProperty Name="SportID1" ColumnName="SportID1" />
+                <ScalarProperty Name="SportName" ColumnName="SportName" />
+                <ScalarProperty Name="SportType" ColumnName="SportType" />
+                <ScalarProperty Name="InjuryID" ColumnName="InjuryID" />
+                <ScalarProperty Name="UserID1" ColumnName="UserID1" />
+                <ScalarProperty Name="MuscleID" ColumnName="MuscleID" />
+                <ScalarProperty Name="JointID" ColumnName="JointID" />
+                <ScalarProperty Name="InjuryDescription" ColumnName="InjuryDescription" />
+                <ScalarProperty Name="BoneID" ColumnName="BoneID" />
               </ComplexTypeMapping>
             </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllSports" FunctionName="EWPModel.Store.GetAllSports">
           </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>

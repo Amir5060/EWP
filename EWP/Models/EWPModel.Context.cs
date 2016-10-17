@@ -48,5 +48,15 @@ namespace EWP.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserByUserID_Result>("GetUserByUserID", userIDParameter);
         }
+    
+        public virtual ObjectResult<Sport> GetAllSports()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sport>("GetAllSports");
+        }
+    
+        public virtual ObjectResult<Sport> GetAllSports(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Sport>("GetAllSports", mergeOption);
+        }
     }
 }
