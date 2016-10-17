@@ -12,6 +12,8 @@ namespace EWP.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class EWPEntities : DbContext
     {
@@ -33,10 +35,18 @@ namespace EWP.Models
         public virtual DbSet<Muscle> Muscles { get; set; }
         public virtual DbSet<Plan> Plans { get; set; }
         public virtual DbSet<Sport> Sports { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Workout> Workouts { get; set; }
         public virtual DbSet<WorkoutMuscle> WorkoutMuscles { get; set; }
         public virtual DbSet<WorkoutPlan> WorkoutPlans { get; set; }
+    
+        public virtual ObjectResult<GetUserByUserID_Result> GetUserByUserID(Nullable<System.Guid> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserByUserID_Result>("GetUserByUserID", userIDParameter);
+        }
     }
 }

@@ -10,18 +10,9 @@
 namespace EWP.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class User
+    public partial class GetUserByUserID_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.C1RM = new HashSet<C1RM>();
-            this.Injuries = new HashSet<Injury>();
-            this.Plans = new HashSet<Plan>();
-        }
-    
         public System.Guid UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -35,13 +26,5 @@ namespace EWP.Models
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public bool EmailConfirmation { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<C1RM> C1RM { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Injury> Injuries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Plan> Plans { get; set; }
-        public virtual Sport Sport { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,8 @@ namespace EWP.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return this.View(new Models.HomeViewModel { CurrerntUserID = User.Identity.GetUserId() });
+            //return View();
         }
 
         public ActionResult About()
@@ -26,5 +28,10 @@ namespace EWP.Controllers
 
             return View();
         }
+
+        //public ActionResult GetUserIDForView()
+        //{
+        //    return this.View(new Models.HomeViewModel { CurrerntUserID = User.Identity.GetUserId() });
+        //}
     }
 }

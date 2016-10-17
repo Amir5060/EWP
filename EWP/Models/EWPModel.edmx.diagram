@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9632c856ba6f4c3282c67324371f1472" Name="Diagram1">
+      <Diagram DiagramId="5b13b86aa909433e9a34d2fd1c20d09b" Name="Diagram1">
         <EntityTypeShape EntityType="EWPModel.C1RM" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EWPModel.C1RMWorkout" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="EWPModel.Bone" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="EWPModel.Muscle" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EWPModel.Plan" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EWPModel.Sport" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWPModel.sysdiagram" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="EWPModel.User" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="EWPModel.Workout" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EWPModel.WorkoutMuscle" Width="1.5" PointX="10.25" PointY="10.875" IsExpanded="true" />

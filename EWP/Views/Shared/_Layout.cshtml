@@ -1,11 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@model EWP.Models.ViewModelBase
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - EWP</title>
+    @using Microsoft.AspNet.Identity
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    
     <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 </head>
@@ -25,35 +28,46 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    
+                    @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Role", "Index", "Role")</li>
-                        <li class="collapse-hidden">
-                            <ul class="nav navbar-nav collapse-hidden">
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" style="margin-right: 5px;" href="#" data-toggle="dropdown">Body<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li>@Html.ActionLink("Muscle", "Index", "Muscles")</li>
-                                        <li>@Html.ActionLink("Bone", "Index", "Bones")</li>
-                                        <li>@Html.ActionLink("Joint", "Index", "Joints")</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="collapse-hidden">
-                            <ul class="nav navbar-nav collapse-hidden">
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" style="margin-right: 5px;" href="#" data-toggle="dropdown">Workout<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li>@Html.ActionLink("Workout", "Index", "Workouts")</li>
-                                        <li>@Html.ActionLink("Sport", "Index", "Sports")</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                        HttpContext httpContext = HttpContext.Current;
+                        object id = User.Identity.GetUserId();
+                        //if (id == null)
+                        //{
+                        //    id = "";
+                        //}
+                        <li>
+                        @Html.ActionLink("User", "Details/" + id, "Users")</li>
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Role", "Index", "Role")</li>
+                            <li class="collapse-hidden">
+                                <ul class="nav navbar-nav collapse-hidden">
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" style="margin-right: 5px;" href="#" data-toggle="dropdown">Body<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Muscle", "Index", "Muscles")</li>
+                                            <li>@Html.ActionLink("Bone", "Index", "Bones")</li>
+                                            <li>@Html.ActionLink("Joint", "Index", "Joints")</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="collapse-hidden">
+                                <ul class="nav navbar-nav collapse-hidden">
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" style="margin-right: 5px;" href="#" data-toggle="dropdown">Workout<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Workout", "Index", "Workouts")</li>
+                                            <li>@Html.ActionLink("Sport", "Index", "Sports")</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                     }
-                    
-                    
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

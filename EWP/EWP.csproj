@@ -206,6 +206,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MusclesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WorkoutMusclesController.cs" />
     <Compile Include="Controllers\WorkoutsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,61 +219,62 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bone.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C1RM.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C1RMWorkout.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CheckAuthorize.cs" />
-    <Compile Include="Models\DataConnection.Context.cs">
+    <Compile Include="Models\EWPModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataConnection.Context.tt</DependentUpon>
+      <DependentUpon>EWPModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataConnection.cs">
+    <Compile Include="Models\EWPModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataConnection.Designer.cs">
+    <Compile Include="Models\EWPModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataConnection.edmx</DependentUpon>
+      <DependentUpon>EWPModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetUserByUserID_Result.cs">
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Injury.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Joint.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Muscle.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Plan.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sport.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModelBase.cs" />
     <Compile Include="Models\Workout.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WorkoutMuscle.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WorkoutPlan.cs">
-      <DependentUpon>DataConnection.tt</DependentUpon>
+      <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -288,15 +290,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\DataConnection.Context.tt">
+    <Content Include="Models\EWPModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataConnection.edmx</DependentUpon>
-      <LastGenOutput>DataConnection.Context.cs</LastGenOutput>
+      <DependentUpon>EWPModel.edmx</DependentUpon>
+      <LastGenOutput>EWPModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DataConnection.tt">
+    <Content Include="Models\EWPModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataConnection.edmx</DependentUpon>
-      <LastGenOutput>DataConnection.cs</LastGenOutput>
+      <DependentUpon>EWPModel.edmx</DependentUpon>
+      <LastGenOutput>EWPModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
@@ -306,12 +308,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Models\User.cs.vsspell" />
-    <EntityDeploy Include="Models\DataConnection.edmx">
+    <EntityDeploy Include="Models\EWPModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataConnection.Designer.cs</LastGenOutput>
+      <LastGenOutput>EWPModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DataConnection.edmx.diagram">
-      <DependentUpon>DataConnection.edmx</DependentUpon>
+    <Content Include="Models\EWPModel.edmx.diagram">
+      <DependentUpon>EWPModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -393,6 +395,11 @@
     <Content Include="Views\WorkoutMuscles\Edit.cshtml" />
     <Content Include="Views\WorkoutMuscles\Index.cshtml" />
     <Content Include="Views\CheckAuthorize\UnAuthorize.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
