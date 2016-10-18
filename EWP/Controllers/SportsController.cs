@@ -10,107 +10,107 @@ using EWP.Models;
 
 namespace EWP.Controllers
 {
-    public class BonesController : Controller
+    public class SportsController : Controller
     {
         private EWPEntities db = new EWPEntities();
 
-        // GET: Bones
+        // GET: Sports
         public ActionResult Index()
         {
-            return View(db.Bones.ToList());
+            return View(db.Sports.ToList());
         }
 
-        // GET: Bones/Details/5
+        // GET: Sports/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bone bone = db.Bones.Find(id);
-            if (bone == null)
+            Sport sport = db.Sports.Find(id);
+            if (sport == null)
             {
                 return HttpNotFound();
             }
-            return View(bone);
+            return View(sport);
         }
 
-        // GET: Bones/Create
+        // GET: Sports/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Bones/Create
+        // POST: Sports/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BoneID,Name")] Bone bone)
+        public ActionResult Create([Bind(Include = "SportID,SportName,SportType")] Sport sport)
         {
             if (ModelState.IsValid)
             {
-                db.Bones.Add(bone);
+                db.Sports.Add(sport);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(bone);
+            return View(sport);
         }
 
-        // GET: Bones/Edit/5
+        // GET: Sports/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bone bone = db.Bones.Find(id);
-            if (bone == null)
+            Sport sport = db.Sports.Find(id);
+            if (sport == null)
             {
                 return HttpNotFound();
             }
-            return View(bone);
+            return View(sport);
         }
 
-        // POST: Bones/Edit/5
+        // POST: Sports/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BoneID,Name")] Bone bone)
+        public ActionResult Edit([Bind(Include = "SportID,SportName,SportType")] Sport sport)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(bone).State = EntityState.Modified;
+                db.Entry(sport).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(bone);
+            return View(sport);
         }
 
-        // GET: Bones/Delete/5
+        // GET: Sports/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Bone bone = db.Bones.Find(id);
-            if (bone == null)
+            Sport sport = db.Sports.Find(id);
+            if (sport == null)
             {
                 return HttpNotFound();
             }
-            return View(bone);
+            return View(sport);
         }
 
-        // POST: Bones/Delete/5
+        // POST: Sports/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Bone bone = db.Bones.Find(id);
-            db.Bones.Remove(bone);
+            Sport sport = db.Sports.Find(id);
+            db.Sports.Remove(sport);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -206,6 +206,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MusclesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SportsController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WorkoutMusclesController.cs" />
@@ -366,11 +367,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Bones\Create.cshtml" />
-    <Content Include="Views\Bones\Delete.cshtml" />
-    <Content Include="Views\Bones\Details.cshtml" />
-    <Content Include="Views\Bones\Edit.cshtml" />
-    <Content Include="Views\Bones\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
@@ -407,6 +403,11 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\UserInfo\Index.cshtml" />
     <Content Include="Views\UserInfo\Create.cshtml" />
+    <Content Include="Views\Bones\Create.cshtml" />
+    <Content Include="Views\Bones\Delete.cshtml" />
+    <Content Include="Views\Bones\Details.cshtml" />
+    <Content Include="Views\Bones\Edit.cshtml" />
+    <Content Include="Views\Bones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

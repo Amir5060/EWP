@@ -7,11 +7,11 @@ namespace EWP.Models
 {
     public abstract class ViewModelBase
     {
-        public string CurrerntUserID { get; set; }
+        //public string CurrerntUserID { get; set; }
     }
 
-    public class HomeViewModel : ViewModelBase
-    {
+    //public class HomeViewModel : ViewModelBase
+    //{
 
-    }    
+    //}    
 }

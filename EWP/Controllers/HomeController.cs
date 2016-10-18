@@ -11,7 +11,7 @@ namespace EWP.Controllers
     {
         public ActionResult Index()
         {
-            return this.View(new Models.HomeViewModel { CurrerntUserID = User.Identity.GetUserId() });
+            return this.View(/*new Models.HomeViewModel { CurrerntUserID = User.Identity.GetUserId() }*/);
             //return View();
         }
 
