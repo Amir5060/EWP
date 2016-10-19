@@ -10,8 +10,7 @@
 namespace EWP.Models
 {
     using System;
-    using System.Web.Mvc;
-
+    
     public partial class GetUserByUserID_Result
     {
         public System.Guid UserID { get; set; }
@@ -36,6 +35,5 @@ namespace EWP.Models
         public Nullable<int> JointID { get; set; }
         public string InjuryDescription { get; set; }
         public Nullable<int> BoneID { get; set; }
-        public SelectList GetAllSports { get; set; }
     }
 }

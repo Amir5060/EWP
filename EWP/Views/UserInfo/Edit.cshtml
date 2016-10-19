@@ -33,13 +33,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Gender, "Gender", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Gender", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("GenderList", new SelectList(ViewBag.GenderList, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                
                 @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DateOfBirth, "Date of birth", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
@@ -87,24 +88,16 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SportID, "SportID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SportID, "Sport", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("SportName", Model.GetAllSports, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gender, "SportID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Gender", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                @Html.DropDownList("SportID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SportID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

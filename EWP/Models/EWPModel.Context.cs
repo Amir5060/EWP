@@ -35,10 +35,10 @@ namespace EWP.Models
         public virtual DbSet<Muscle> Muscles { get; set; }
         public virtual DbSet<Plan> Plans { get; set; }
         public virtual DbSet<Sport> Sports { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Workout> Workouts { get; set; }
         public virtual DbSet<WorkoutMuscle> WorkoutMuscles { get; set; }
         public virtual DbSet<WorkoutPlan> WorkoutPlans { get; set; }
+        public virtual DbSet<EWPUser> EWPUsers { get; set; }
     
         public virtual ObjectResult<GetUserByUserID_Result> GetUserByUserID(Nullable<System.Guid> userID)
         {

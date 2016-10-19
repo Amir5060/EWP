@@ -37,7 +37,7 @@
                         //    id = "";
                         //}
                         <li>
-                        @Html.ActionLink("User", "Details/" + id, "Users")</li>
+                        @Html.ActionLink("UserInfo", "../UserInfo/Edit", new { id = User.Identity.GetUserId() })</li>
                         if (User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("Role", "Index", "Role")</li>

@@ -26,8 +26,8 @@ namespace EWP.Models
         public Nullable<int> WorkoutTime { get; set; }
         public Nullable<System.DateTime> PlanDate { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkoutPlan> WorkoutPlans { get; set; }
+        public virtual EWPUser EWPUser { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace EWP.Controllers
         [CheckAuthorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            var users = db.Users.Include(u => u.Sport);
+            var users = db.EWPUsers.Include(u => u.Sport);
             return View(users.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace EWP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            EWPUser user = db.EWPUsers.Find(id);
             if (user == null)
             {
                 return RedirectToAction("Create");
@@ -50,12 +50,12 @@ namespace EWP.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,FirstName,LastName,Gender,DateOfBirth,Email,Username,Height,Experience,SportID,PhoneNumber,Address,EmailConfirmation")] User user)
+        public ActionResult Create([Bind(Include = "UserID,FirstName,LastName,Gender,DateOfBirth,Email,Username,Height,Experience,SportID,PhoneNumber,Address,EmailConfirmation")] EWPUser user)
         {
             if (ModelState.IsValid)
             {
                 user.UserID = Guid.NewGuid();
-                db.Users.Add(user);
+                db.EWPUsers.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -71,7 +71,7 @@ namespace EWP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            EWPUser user = db.EWPUsers.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -85,7 +85,7 @@ namespace EWP.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,FirstName,LastName,Gender,DateOfBirth,Email,Username,Height,Experience,SportID,PhoneNumber,Address,EmailConfirmation")] User user)
+        public ActionResult Edit([Bind(Include = "UserID,FirstName,LastName,Gender,DateOfBirth,Email,Username,Height,Experience,SportID,PhoneNumber,Address,EmailConfirmation")] EWPUser user)
         {
             if (ModelState.IsValid)
             {
@@ -105,7 +105,7 @@ namespace EWP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            EWPUser user = db.EWPUsers.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -119,8 +119,8 @@ namespace EWP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
+            EWPUser user = db.EWPUsers.Find(id);
+            db.EWPUsers.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

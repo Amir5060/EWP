@@ -24,6 +24,6 @@ namespace EWP.Models
         public virtual Bone Bone { get; set; }
         public virtual Joint Joint { get; set; }
         public virtual Muscle Muscle { get; set; }
-        public virtual User User { get; set; }
+        public virtual EWPUser EWPUser { get; set; }
     }
 }

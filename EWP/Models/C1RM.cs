@@ -11,8 +11,7 @@ namespace EWP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class C1RM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,14 +20,13 @@ namespace EWP.Models
             this.C1RMWorkout = new HashSet<C1RMWorkout>();
         }
     
-        [Key]
         public int RMID { get; set; }
         public System.Guid UserID { get; set; }
         public int UserWeight { get; set; }
         public System.DateTime RMDate { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<C1RMWorkout> C1RMWorkout { get; set; }
+        public virtual EWPUser EWPUser { get; set; }
     }
 }

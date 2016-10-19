@@ -245,6 +245,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EWPModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\EWPUser.cs">
+      <DependentUpon>EWPModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GetAllSports_Result.cs">
       <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
@@ -266,9 +269,6 @@
       <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sport.cs">
-      <DependentUpon>EWPModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
       <DependentUpon>EWPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModelBase.cs" />
@@ -401,8 +401,8 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\UserInfo\Index.cshtml" />
-    <Content Include="Views\UserInfo\Create.cshtml" />
+    <Content Include="Views\UserInfo\Details.cshtml" />
+    <Content Include="Views\UserInfo\Edit.cshtml" />
     <Content Include="Views\Bones\Create.cshtml" />
     <Content Include="Views\Bones\Delete.cshtml" />
     <Content Include="Views\Bones\Details.cshtml" />

@@ -17,7 +17,7 @@ namespace EWP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sport()
         {
-            this.Users = new HashSet<User>();
+            this.EWPUsers = new HashSet<EWPUser>();
         }
     
         public int SportID { get; set; }
@@ -25,6 +25,6 @@ namespace EWP.Models
         public string SportType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<EWPUser> EWPUsers { get; set; }
     }
 }

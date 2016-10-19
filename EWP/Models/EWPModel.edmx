@@ -32,6 +32,24 @@
           <Property Name="BoneID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
+        <EntityType Name="EWPUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="500" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Email" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Username" Type="nvarchar" MaxLength="500" />
+          <Property Name="Height" Type="int" />
+          <Property Name="Experience" Type="int" />
+          <Property Name="SportID" Type="int" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="EmailConfirmation" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Injury">
           <Key>
             <PropertyRef Name="InjuryID" />
@@ -75,24 +93,6 @@
           <Property Name="SportName" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="SportType" Type="nvarchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="500" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="500" />
-          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
-          <Property Name="DateOfBirth" Type="date" />
-          <Property Name="Email" Type="nvarchar" MaxLength="1000" />
-          <Property Name="Username" Type="nvarchar" MaxLength="500" />
-          <Property Name="Height" Type="int" />
-          <Property Name="Experience" Type="int" />
-          <Property Name="SportID" Type="int" />
-          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
-          <Property Name="EmailConfirmation" Type="bit" Nullable="false" />
-        </EntityType>
         <EntityType Name="Workout">
           <Key>
             <PropertyRef Name="WorkoutID" />
@@ -126,10 +126,10 @@
           <Property Name="WorkoutPlanWeight" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_1RM_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="EWPUser" Type="Self.EWPUser" Multiplicity="1" />
           <End Role="1RM" Type="Self.1RM" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="EWPUser">
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="1RM">
@@ -198,10 +198,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Injury_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="EWPUser" Type="Self.EWPUser" Multiplicity="1" />
           <End Role="Injury" Type="Self.Injury" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="EWPUser">
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="Injury">
@@ -210,10 +210,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Plan_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="EWPUser" Type="Self.EWPUser" Multiplicity="1" />
           <End Role="Plan" Type="Self.Plan" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="EWPUser">
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="Plan">
@@ -223,12 +223,12 @@
         </Association>
         <Association Name="FK_User_Sport">
           <End Role="Sport" Type="Self.Sport" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <End Role="EWPUser" Type="Self.EWPUser" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sport">
               <PropertyRef Name="SportID" />
             </Principal>
-            <Dependent Role="User">
+            <Dependent Role="EWPUser">
               <PropertyRef Name="SportID" />
             </Dependent>
           </ReferentialConstraint>
@@ -289,17 +289,17 @@
           <EntitySet Name="1RM" EntityType="Self.1RM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="1RMWorkout" EntityType="Self.1RMWorkout" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bone" EntityType="Self.Bone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EWPUser" EntityType="Self.EWPUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Injury" EntityType="Self.Injury" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Joint" EntityType="Self.Joint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Muscle" EntityType="Self.Muscle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plan" EntityType="Self.Plan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sport" EntityType="Self.Sport" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Workout" EntityType="Self.Workout" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkoutMuscle" EntityType="Self.WorkoutMuscle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkoutPlan" EntityType="Self.WorkoutPlan" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_1RM_User" Association="Self.FK_1RM_User">
-            <End Role="User" EntitySet="User" />
+            <End Role="EWPUser" EntitySet="EWPUser" />
             <End Role="1RM" EntitySet="1RM" />
           </AssociationSet>
           <AssociationSet Name="FK_1RMWorkout_1RM" Association="Self.FK_1RMWorkout_1RM">
@@ -323,16 +323,16 @@
             <End Role="Injury" EntitySet="Injury" />
           </AssociationSet>
           <AssociationSet Name="FK_Injury_User" Association="Self.FK_Injury_User">
-            <End Role="User" EntitySet="User" />
+            <End Role="EWPUser" EntitySet="EWPUser" />
             <End Role="Injury" EntitySet="Injury" />
           </AssociationSet>
           <AssociationSet Name="FK_Plan_User" Association="Self.FK_Plan_User">
-            <End Role="User" EntitySet="User" />
+            <End Role="EWPUser" EntitySet="EWPUser" />
             <End Role="Plan" EntitySet="Plan" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Sport" Association="Self.FK_User_Sport">
             <End Role="Sport" EntitySet="Sport" />
-            <End Role="User" EntitySet="User" />
+            <End Role="EWPUser" EntitySet="EWPUser" />
           </AssociationSet>
           <AssociationSet Name="FK_WorkoutMuscle_Muscle" Association="Self.FK_WorkoutMuscle_Muscle">
             <End Role="Muscle" EntitySet="Muscle" />
@@ -363,8 +363,8 @@
           <Property Name="UserID" Type="Guid" Nullable="false" />
           <Property Name="UserWeight" Type="Int32" Nullable="false" />
           <Property Name="RMDate" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="User" Relationship="Self.FK_1RM_User" FromRole="C1RM" ToRole="User" />
           <NavigationProperty Name="C1RMWorkout" Relationship="Self.FK_1RMWorkout_1RM" FromRole="C1RM" ToRole="C1RMWorkout" />
+          <NavigationProperty Name="EWPUser" Relationship="EWPModel.FK_1RM_User1" FromRole="C1RM" ToRole="EWPUser" />
         </EntityType>
         <EntityType Name="C1RMWorkout">
           <Key>
@@ -400,7 +400,7 @@
           <NavigationProperty Name="Bone" Relationship="Self.FK_Injury_Bone" FromRole="Injury" ToRole="Bone" />
           <NavigationProperty Name="Joint" Relationship="Self.FK_Injury_Joint" FromRole="Injury" ToRole="Joint" />
           <NavigationProperty Name="Muscle" Relationship="Self.FK_Injury_Muscle" FromRole="Injury" ToRole="Muscle" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Injury_User" FromRole="Injury" ToRole="User" />
+          <NavigationProperty Name="EWPUser" Relationship="EWPModel.FK_Injury_User1" FromRole="Injury" ToRole="EWPUser" />
         </EntityType>
         <EntityType Name="Joint">
           <Key>
@@ -428,8 +428,8 @@
           <Property Name="Microcycle" Type="Int32" />
           <Property Name="WorkoutTime" Type="Int32" />
           <Property Name="PlanDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Plan_User" FromRole="Plan" ToRole="User" />
           <NavigationProperty Name="WorkoutPlans" Relationship="Self.FK_WorkoutPlan_Plan" FromRole="Plan" ToRole="WorkoutPlan" />
+          <NavigationProperty Name="EWPUser" Relationship="EWPModel.FK_Plan_User1" FromRole="Plan" ToRole="EWPUser" />
         </EntityType>
         <EntityType Name="Sport">
           <Key>
@@ -438,29 +438,7 @@
           <Property Name="SportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SportName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SportType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_User_Sport" FromRole="Sport" ToRole="User" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="Guid" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
-          <Property Name="Email" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Username" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Height" Type="Int32" />
-          <Property Name="Experience" Type="Int32" />
-          <Property Name="SportID" Type="Int32" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmation" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="C1RM" Relationship="Self.FK_1RM_User" FromRole="User" ToRole="C1RM" />
-          <NavigationProperty Name="Injuries" Relationship="Self.FK_Injury_User" FromRole="User" ToRole="Injury" />
-          <NavigationProperty Name="Plans" Relationship="Self.FK_Plan_User" FromRole="User" ToRole="Plan" />
-          <NavigationProperty Name="Sport" Relationship="Self.FK_User_Sport" FromRole="User" ToRole="Sport" />
+          <NavigationProperty Name="EWPUsers" Relationship="EWPModel.FK_User_Sport1" FromRole="Sport" ToRole="EWPUser" />
         </EntityType>
         <EntityType Name="Workout">
           <Key>
@@ -501,18 +479,6 @@
           <NavigationProperty Name="Plan" Relationship="Self.FK_WorkoutPlan_Plan" FromRole="WorkoutPlan" ToRole="Plan" />
           <NavigationProperty Name="Workout" Relationship="Self.FK_WorkoutPlan_Workout" FromRole="WorkoutPlan" ToRole="Workout" />
         </EntityType>
-        <Association Name="FK_1RM_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="C1RM" Type="Self.C1RM" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="C1RM">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_1RMWorkout_1RM">
           <End Role="C1RM" Type="Self.C1RM" Multiplicity="1" />
           <End Role="C1RMWorkout" Type="Self.C1RMWorkout" Multiplicity="*" />
@@ -573,18 +539,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Injury_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Injury" Type="Self.Injury" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Injury">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WorkoutMuscle_Muscle">
           <End Role="Muscle" Type="Self.Muscle" Multiplicity="1" />
           <End Role="WorkoutMuscle" Type="Self.WorkoutMuscle" Multiplicity="*" />
@@ -597,18 +551,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Plan_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Plan" Type="Self.Plan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Plan">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WorkoutPlan_Plan">
           <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
           <End Role="WorkoutPlan" Type="Self.WorkoutPlan" Multiplicity="*" />
@@ -618,18 +560,6 @@
             </Principal>
             <Dependent Role="WorkoutPlan">
               <PropertyRef Name="PlanID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Sport">
-          <End Role="Sport" Type="Self.Sport" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sport">
-              <PropertyRef Name="SportID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="SportID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -666,14 +596,9 @@
           <EntitySet Name="Muscles" EntityType="Self.Muscle" />
           <EntitySet Name="Plans" EntityType="Self.Plan" />
           <EntitySet Name="Sports" EntityType="Self.Sport" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Workouts" EntityType="Self.Workout" />
           <EntitySet Name="WorkoutMuscles" EntityType="Self.WorkoutMuscle" />
           <EntitySet Name="WorkoutPlans" EntityType="Self.WorkoutPlan" />
-          <AssociationSet Name="FK_1RM_User" Association="Self.FK_1RM_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="C1RM" EntitySet="C1RM" />
-          </AssociationSet>
           <AssociationSet Name="FK_1RMWorkout_1RM" Association="Self.FK_1RMWorkout_1RM">
             <End Role="C1RM" EntitySet="C1RM" />
             <End Role="C1RMWorkout" EntitySet="C1RMWorkout" />
@@ -694,25 +619,13 @@
             <End Role="Muscle" EntitySet="Muscles" />
             <End Role="Injury" EntitySet="Injuries" />
           </AssociationSet>
-          <AssociationSet Name="FK_Injury_User" Association="Self.FK_Injury_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Injury" EntitySet="Injuries" />
-          </AssociationSet>
           <AssociationSet Name="FK_WorkoutMuscle_Muscle" Association="Self.FK_WorkoutMuscle_Muscle">
             <End Role="Muscle" EntitySet="Muscles" />
             <End Role="WorkoutMuscle" EntitySet="WorkoutMuscles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Plan_User" Association="Self.FK_Plan_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Plan" EntitySet="Plans" />
-          </AssociationSet>
           <AssociationSet Name="FK_WorkoutPlan_Plan" Association="Self.FK_WorkoutPlan_Plan">
             <End Role="Plan" EntitySet="Plans" />
             <End Role="WorkoutPlan" EntitySet="WorkoutPlans" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Sport" Association="Self.FK_User_Sport">
-            <End Role="Sport" EntitySet="Sports" />
-            <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_WorkoutMuscle_Workout" Association="Self.FK_WorkoutMuscle_Workout">
             <End Role="Workout" EntitySet="Workouts" />
@@ -726,6 +639,23 @@
           <Parameter Name="UserID" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="GetAllSports" EntitySet="Sports" ReturnType="Collection(EWPModel.Sport)" />
+          <EntitySet Name="EWPUsers" EntityType="EWPModel.EWPUser" />
+          <AssociationSet Name="FK_1RM_User1" Association="EWPModel.FK_1RM_User1">
+            <End Role="EWPUser" EntitySet="EWPUsers" />
+            <End Role="C1RM" EntitySet="C1RM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Injury_User1" Association="EWPModel.FK_Injury_User1">
+            <End Role="EWPUser" EntitySet="EWPUsers" />
+            <End Role="Injury" EntitySet="Injuries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plan_User1" Association="EWPModel.FK_Plan_User1">
+            <End Role="EWPUser" EntitySet="EWPUsers" />
+            <End Role="Plan" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Sport1" Association="EWPModel.FK_User_Sport1">
+            <End Role="Sport" EntitySet="Sports" />
+            <End Role="EWPUser" EntitySet="EWPUsers" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetUserByUserID_Result">
           <Property Type="Guid" Name="UserID" Nullable="false" />
@@ -756,6 +686,76 @@
           <Property Type="String" Name="SportName" Nullable="false" MaxLength="500" />
           <Property Type="String" Name="SportType" Nullable="true" MaxLength="500" />
         </ComplexType>
+        <EntityType Name="EWPUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Email" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Experience" Type="Int32" />
+          <Property Name="SportID" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmation" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="C1RM" Relationship="EWPModel.FK_1RM_User1" FromRole="EWPUser" ToRole="C1RM" />
+          <NavigationProperty Name="Injuries" Relationship="EWPModel.FK_Injury_User1" FromRole="EWPUser" ToRole="Injury" />
+          <NavigationProperty Name="Plans" Relationship="EWPModel.FK_Plan_User1" FromRole="EWPUser" ToRole="Plan" />
+          <NavigationProperty Name="Sport" Relationship="EWPModel.FK_User_Sport1" FromRole="EWPUser" ToRole="Sport" />
+        </EntityType>
+        <Association Name="FK_1RM_User1">
+          <End Type="EWPModel.EWPUser" Role="EWPUser" Multiplicity="1" />
+          <End Type="EWPModel.C1RM" Role="C1RM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EWPUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="C1RM">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Injury_User1">
+          <End Type="EWPModel.EWPUser" Role="EWPUser" Multiplicity="1" />
+          <End Type="EWPModel.Injury" Role="Injury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EWPUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Injury">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plan_User1">
+          <End Type="EWPModel.EWPUser" Role="EWPUser" Multiplicity="1" />
+          <End Type="EWPModel.Plan" Role="Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EWPUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Plan">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Sport1">
+          <End Type="EWPModel.Sport" Role="Sport" Multiplicity="0..1" />
+          <End Type="EWPModel.EWPUser" Role="EWPUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport">
+              <PropertyRef Name="SportID" />
+            </Principal>
+            <Dependent Role="EWPUser">
+              <PropertyRef Name="SportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         
       </Schema>
     </edmx:ConceptualModels>
@@ -841,25 +841,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="EWPModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Experience" ColumnName="Experience" />
-                <ScalarProperty Name="SportID" ColumnName="SportID" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="EmailConfirmation" ColumnName="EmailConfirmation" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Workouts">
             <EntityTypeMapping TypeName="EWPModel.Workout">
               <MappingFragment StoreEntitySet="Workout">
@@ -925,6 +906,25 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetAllSports" FunctionName="EWPModel.Store.GetAllSports">
           </FunctionImportMapping>
+          <EntitySetMapping Name="EWPUsers">
+            <EntityTypeMapping TypeName="EWPModel.EWPUser">
+              <MappingFragment StoreEntitySet="EWPUser">
+                <ScalarProperty Name="EmailConfirmation" ColumnName="EmailConfirmation" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SportID" ColumnName="SportID" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -11,11 +11,9 @@ namespace EWP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class C1RMWorkout
     {
-        [Key]
         public int RMWorkoutID { get; set; }
         public int RMID { get; set; }
         public int WorkoutID { get; set; }
