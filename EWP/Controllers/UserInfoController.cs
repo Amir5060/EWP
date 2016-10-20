@@ -12,6 +12,12 @@ namespace EWP.Controllers
     public class UserInfoController : Controller
     {
         EWPEntities db = new EWPEntities();
+        public UserInfoController()
+        {
+            ViewBag.SportID = new SelectList(db.Sports, "SportID", "SportName");
+            ViewBag.GenderList = GenderList();
+        }
+
         // GET: UserInfo
         public ActionResult Index(Guid userID)
         {
@@ -70,12 +76,14 @@ namespace EWP.Controllers
             //}
             if (user != null)
             {
-                ViewBag.SportID = new SelectList(db.Sports, "SportID", "SportName", user.SportID);//new SelectList(db.Sports, "SportID", "SportName", userInfo.SportID);
-                ViewBag.GenderID = new SelectList(GenderList(), "GenderName", user.Gender);
+                GetUserByUserID_Result currentUser = db.GetUserByUserID(id).ToList()[0];
+                ViewBag.SportID = new SelectList(db.Sports, "SportID", "SportName", currentUser.SportID);//new SelectList(db.Sports, "SportID", "SportName", userInfo.SportID);
+                ViewBag.GenderID = new SelectList(GenderList(), "GenderName", currentUser.Gender);
+                return View(currentUser);
             }
             else
             {
-                ViewBag.SportID = new SelectList(db.Sports, "SportID", "SportName");                
+                ViewBag.SportID = new SelectList(db.Sports, "SportID", "SportName");
                 ViewBag.GenderList = GenderList();
                 
             }
@@ -90,33 +98,42 @@ namespace EWP.Controllers
         {
             try
             {
-                ViewBag.SportID = new SelectList(db.Sports, "SportID", "SportName");
-                ViewBag.GenderList = GenderList();
+               
                 // TODO: Add update logic here
-                EWPUser myUser = db.EWPUsers.Find(id);
-                if (myUser == null)
+                EWPUser newUser = db.EWPUsers.Find(id);
+                if (newUser == null)
                 {
-                    myUser.UserID = (Guid)id;
-                    myUser.FirstName = collection["FirstName"];
-                    myUser.LastName = collection["LastName"];
-                    myUser.Gender = collection["Gender"];
-                    myUser.DateOfBirth = Convert.ToDateTime(collection["DateOfBirth"]);
-                    myUser.Username = collection["Username"];
-                    myUser.Height = Convert.ToInt32(collection["Height"]);
-                    myUser.Experience = Convert.ToInt32(collection["Experience"]);
-                    myUser.SportID = Convert.ToInt32(collection["SportID"]);
-                    myUser.PhoneNumber = collection["PhoneNumber"];
-                    myUser.Address = collection["Address"];
+                    newUser = new EWPUser();
+                    newUser.UserID = (Guid)id;
+                    newUser.FirstName = collection["FirstName"];
+                    newUser.LastName = collection["LastName"];
+                    newUser.Gender = collection["Gender"];
+                    if (collection["DateOfBirth"] != null)
+                        if (collection["DateOfBirth"].ToString().Trim() != "")
+                            newUser.DateOfBirth = Convert.ToDateTime(collection["DateOfBirth"]);
+                    if (collection["Username"].ToString().Trim().Length > 0)
+                        newUser.Username = collection["Username"];
+                    if (collection["Height"].ToString().Trim().Length > 0)
+                        newUser.Height = Convert.ToInt32(collection["Height"]);
+                    if (collection["Experience"].ToString().Trim().Length > 0)
+                        newUser.Experience = Convert.ToInt32(collection["Experience"]);
+                    newUser.SportID = Convert.ToInt32(collection["SportID"]);
+                    newUser.PhoneNumber = collection["PhoneNumber"];
+                    newUser.Address = collection["Address"];
 
+                    db.EWPUsers.Add(newUser);
                     db.SaveChanges();
                 }
                 else
                 {
-                    UpdateModel(myUser, "myUser");
+                    GetUserByUserID_Result currentUser = db.GetUserByUserID(id).ToList()[0];
+                    UpdateModel(currentUser, "currentUser");
                 }
-                
+                ViewBag.SportID = new SelectList(db.Sports, "SportID", "SportName");
+                ViewBag.GenderList = GenderList();
                 //myUser.save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return View();
             }
             catch(Exception ex)
             {

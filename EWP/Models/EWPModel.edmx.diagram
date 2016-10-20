@@ -6,16 +6,16 @@
     <edmx:Diagrams>
       <Diagram DiagramId="5b13b86aa909433e9a34d2fd1c20d09b" Name="Diagram1">
         <EntityTypeShape EntityType="EWPModel.C1RM" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWPModel.C1RMWorkout" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWPModel.Bone" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWPModel.Injury" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWPModel.Joint" Width="1.5" PointX="6" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EWPModel.C1RMWorkout" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EWPModel.Bone" Width="1.5" PointX="7.375" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EWPModel.Injury" Width="1.5" PointX="10.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EWPModel.Joint" Width="1.5" PointX="12.375" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EWPModel.Muscle" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWPModel.Plan" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWPModel.Sport" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EWPModel.Plan" Width="1.5" PointX="0.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EWPModel.Sport" Width="1.5" PointX="0.5" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EWPModel.Workout" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWPModel.WorkoutMuscle" Width="1.5" PointX="10.25" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="EWPModel.WorkoutPlan" Width="1.5" PointX="7.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EWPModel.WorkoutMuscle" Width="1.5" PointX="12.125" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EWPModel.WorkoutPlan" Width="1.5" PointX="9.25" PointY="4.5" IsExpanded="true" />
         <AssociationConnector Association="EWPModel.FK_1RMWorkout_1RM" ManuallyRouted="false" />
         <AssociationConnector Association="EWPModel.FK_1RMWorkout_Workout" ManuallyRouted="false" />
         <AssociationConnector Association="EWPModel.FK_Injury_Bone" ManuallyRouted="false" />
@@ -25,7 +25,7 @@
         <AssociationConnector Association="EWPModel.FK_WorkoutPlan_Plan" ManuallyRouted="false" />
         <AssociationConnector Association="EWPModel.FK_WorkoutMuscle_Workout" ManuallyRouted="false" />
         <AssociationConnector Association="EWPModel.FK_WorkoutPlan_Workout" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="EWPModel.EWPUser" Width="1.5" PointX="3.125" PointY="4.75" />
+        <EntityTypeShape EntityType="EWPModel.EWPUser" Width="1.5" PointX="3" PointY="0.875" />
         <AssociationConnector Association="EWPModel.FK_1RM_User1" />
         <AssociationConnector Association="EWPModel.FK_Injury_User1" />
         <AssociationConnector Association="EWPModel.FK_Plan_User1" />
