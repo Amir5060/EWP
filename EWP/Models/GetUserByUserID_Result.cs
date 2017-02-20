@@ -26,11 +26,9 @@ namespace EWP.Models
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public bool EmailConfirmation { get; set; }
-        public int SportID1 { get; set; }
         public string SportName { get; set; }
         public string SportType { get; set; }
         public int InjuryID { get; set; }
-        public System.Guid UserID1 { get; set; }
         public Nullable<int> MuscleID { get; set; }
         public Nullable<int> JointID { get; set; }
         public string InjuryDescription { get; set; }
